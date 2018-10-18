@@ -1,15 +1,7 @@
-// Daniel Shiffman
-// http://codingtra.in
-// http://patreon.com/codingtrain
-// Code for: https://youtu.be/cXgA1d_E-jY
-
-// Pipe is exported (eslint flags)
-/* exported Pipe */
-
 class Pipe {
   constructor() {
-    this.spacing = 125;
-    this.top = random(height / 6, 3 / 4 * height);
+    this.spacing = 170;
+    this.top = random((height-50) / 8, 3 / 8 * (height-50));
     this.bottom = this.top + this.spacing;
 
     this.x = width;

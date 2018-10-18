@@ -1,17 +1,6 @@
-// Daniel Shiffman
-// http://codingtra.in
-// http://patreon.com/codingtrain
-// Code for: https://youtu.be/cXgA1d_E-jY
-
-// P5 exported functions (eslint flags)
-/* exported preload, setup, draw, keyPressed */
-
-// Exported sprites (eslint flags)
-/* exported birdSprite, pipeBodySprite, pipePeakSprite */
-
 var bird;
 var pipes;
-var parallax = 0.8;
+var parallax = 1;
 var score = 0;
 var maxScore = 0;
 var birdSprite;
@@ -27,14 +16,16 @@ var prevTouched = touched;
 
 
 function preload() {
-  pipeBodySprite = loadImage('graphics/pipe_marshmallow_fix.png');
-  pipePeakSprite = loadImage('graphics/pipe_marshmallow_fix.png');
-  birdSprite = loadImage('graphics/train.png');
-  bgImg = loadImage('graphics/background.png');
+  pipePeakSprite = loadImage('graphics/tube2.png');
+  pipeBodySprite = loadImage('graphics/tube1.png');
+  birdSprite = loadImage('graphics/bird.png');
+  bgImg = loadImage('background.png');
+  pixelFont = loadFont('VCR_OSD_MONO_1.001.ttf');
 }
 
 function setup() {
-  createCanvas(800, 600);
+  var myCanvas = createCanvas(533, 400);
+  myCanvas.parent('flappy_bird_div');
   reset();
 }
 
@@ -101,9 +92,10 @@ function draw() {
 }
 
 function showScores() {
-  textSize(32);
-  text('score: ' + score, 1, 32);
-  text('record: ' + maxScore, 1, 64);
+  textSize(20);
+  textFont(pixelFont);
+  text(' Score: ' + score, 1, 26);
+  text(' Record: ' + maxScore, 1, 50);
 }
 
 function gameover() {
@@ -131,6 +123,7 @@ function keyPressed() {
   if (key === ' ') {
     bird.up();
     if (isOver) reset(); //you can just call reset() in Machinelearning if you die, because you cant simulate keyPress with code.
+    return false;
   }
 }
 

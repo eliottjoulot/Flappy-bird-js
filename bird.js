@@ -1,23 +1,15 @@
-// Daniel Shiffman
-// http://codingtra.in
-// http://patreon.com/codingtrain
-// Code for: https://youtu.be/cXgA1d_E-jY
-
-// Class is exported (eslint flag)
-/* exported Bird */
-
 class Bird {
   constructor() {
-    this.y = height / 2;
+    this.y = (height / 2) - 50;
     this.x = 64;
 
     this.gravity = 0.6;
-    this.lift = -10;
+    this.lift = -9;
     this.velocity = 0;
 
     this.icon = birdSprite;
-    this.width = 64;
-    this.height = 64;
+    this.width = 50;
+    this.height = 50;
   }
 
   show() {
@@ -33,11 +25,12 @@ class Bird {
     this.velocity += this.gravity;
     this.y += this.velocity;
 
-    if (this.y >= height - this.height / 2) {
-      this.y = height - this.height / 2;
+    // Touching ground
+    if (this.y >= height - this.height / 2 - 59) {
+      this.y = height - this.height / 2 - 59;
       this.velocity = 0;
     }
-
+    // Touching sky
     if (this.y <= this.height / 2) {
       this.y = this.height / 2;
       this.velocity = 0;
